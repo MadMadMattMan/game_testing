@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MC Fall
+  m_Name: MC Jump Side Start
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,6 +21,10 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+      value: {fileID: -6132225807186050624, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
+    - time: 0.083333336
+      value: {fileID: 6957789130575872903, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
+    - time: 0.16666667
       value: {fileID: 5634210213704996742, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
     attribute: m_Sprite
     path: 
@@ -44,13 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: -6132225807186050624, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
+    - {fileID: 6957789130575872903, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
     - {fileID: 5634210213704996742, guid: 4e826a39fcf20d6489080e7cfa433cd5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.083333336
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
