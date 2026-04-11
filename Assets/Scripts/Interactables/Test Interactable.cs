@@ -5,6 +5,7 @@ public class TestInteractable : MonoBehaviour, Interactable
     [SerializeField] string debugMessage = "Test Interactable was interacted with";
     [SerializeField] bool destroyOnInteract = true;
     bool makedForDestruction = false;
+    [SerializeField] Collectable collecableSettings;
 
     // check and force add a trigger to this object on awake
     void Awake() {
@@ -18,9 +19,10 @@ public class TestInteractable : MonoBehaviour, Interactable
         if (makedForDestruction) 
             Destroy(gameObject);
     }
-    public void Interact() {
+    public void Interact(InventoryManager inventory) {
         Debug.Log(debugMessage);
         if (destroyOnInteract) 
             makedForDestruction = true;
+        inventory.AddItem(collecableSettings);
     }
 }
