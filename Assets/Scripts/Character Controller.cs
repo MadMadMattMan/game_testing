@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Gradle.Manifest;
 using Unity.Cinemachine;
-using Unity.ProjectAuditor.Editor.Core;
-using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,25 +7,27 @@ public class CharacterController : MonoBehaviour {
     // The actions defined in the InputSystemAsset relevent to this controller
     InputAction moveAction, sprintAction, jumpAction, interactAction;
 
-    [Header("Character Settings")]
-    // horizontal
+    [Header("Movement Settings")]
     float xVelocity;
-    [Tooltip("Speed for base walk")] public float walkSpeed = 1f;
-    [Tooltip("Speed for shift run")] public float runSpeed = 2f;
+    [Tooltip("Speed for base walk")] public float walkSpeed = 0.8f;
+    [Tooltip("Speed for shift run")] public float runSpeed = 1.6f;
     float maxSpeed = 0f; // The current max walk speed
-    [Tooltip("Rate of speed up for walking")] public float acceleration = 2f;
+    [Tooltip("Rate of speed up for walking")] public float acceleration = 0.25f;
     [Tooltip("Rate of stopping for walking")] public float friction = 2f;
     float epsilon = 0.2f; // tolerance value
     int xFlip = 1; // look direction multiplier
     float scale; // character scale
 
-    // vertical
-    [Tooltip("How high the player jumps (depends on gravity)")] public float jumpheight = 1f;
-    [Tooltip("How fast the player falls")] public float gravity = 9.81f;
+    [Header("Jumping Settings")]
+    [Tooltip("How high the player jumps (depends on gravity)")] public float jumpheight = 2f;
+    [Tooltip("How fast the player falls")] public float gravity = 20f;
     bool isGrounded = false; // is currently on ground
     bool pastGrounded = false; // was last frame on ground
     [Tooltip("How close the player needs to be from the ground to count as grounded")]
-    public float groundedDistance = 0.1f;
+    public float groundedDistance = 0.075f;
+
+    [Header("Inventory Settings")]
+    public InventoryManager inventoryManager;
 
     [Header("Other")]
     // looping
@@ -50,6 +48,7 @@ public class CharacterController : MonoBehaviour {
         amr = GetComponent<Animator>();
         tf = GetComponent<Transform>();
         col = GetComponent<BoxCollider2D>();
+        inventoryManager.InitializeInventory();
 
         // Check for missing - if so force error
         if (rb == null || amr == null || tf == null || col == null)
@@ -141,7 +140,7 @@ public class CharacterController : MonoBehaviour {
             foreach (GameObject t in triggerOverlaps) {
                 Interactable i;
                 if (t.TryGetComponent<Interactable>(out i)) {
-                    i.Interact();
+                    i.Interact(inventoryManager);
                 }
             }
         }
