@@ -29,37 +29,4 @@ public class InventoryManager {
     void ApplyItemEffects(Collectable item) {
 
     }
-
-    public void DropItem(int i) {
-        Debug.Log("Dropping item from index " + i);
-        Collectable item = inventory[i];
-        if (item.obj != null)
-            controller.Spawn(item.obj);
-        RemoveItem(item);
-    }
-    public bool RemoveItem(int i)
-    {
-        Collectable item = inventory[i];
-        inventory.SetValue(Collectable.empty, i);
-        RemoveItemEffects(item);
-        inventorySlots[i].sprite = null; // set graphics of slot
-        inventorySlots[i].color = new Color(255, 255, 255, 0);
-        return true;
-    }
-    public bool RemoveItem(Collectable item) {
-        for (int i = 0; i < 9; i++) {
-            if (inventory[i].Equals(item)) {
-                inventory.SetValue(Collectable.empty, i);
-                RemoveItemEffects(item);
-                inventorySlots[i].sprite = null; // set graphics of slot
-                inventorySlots[i].color = new Color(255, 255, 255, 0);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void RemoveItemEffects(Collectable item) {
-
-    }
 }

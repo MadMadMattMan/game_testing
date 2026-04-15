@@ -35,12 +35,13 @@ public class CharacterController : MonoBehaviour {
     float mapSize; // calculated at runtime
 
     // private references
-    Rigidbody2D rb;
-    BoxCollider2D col;
-    Animator amr;
-    Transform tf;
-    CinemachineCamera cine;
-    List<GameObject> triggerOverlaps = new List<GameObject>();
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] BoxCollider2D col;
+    [SerializeField] Animator amr;
+    [SerializeField] Transform tf;
+    [SerializeField] CinemachineCamera cine;
+    [SerializeField] List<GameObject> triggerOverlaps = new List<GameObject>();
+    [HideInInspector] public Animator collectionAnimator;
 
     // Awake is called when script is initialized
     void Awake() {
@@ -57,6 +58,7 @@ public class CharacterController : MonoBehaviour {
     // Start called before first frame of game, used to initialize values
     void Start() {
         inventoryManager.InitializeInventory(this);
+        scale = tf.localScale.x;
 
         // Get inputs
         moveAction = InputSystem.actions.FindAction("Move");
@@ -64,21 +66,33 @@ public class CharacterController : MonoBehaviour {
         jumpAction = InputSystem.actions.FindAction("Jump");
         interactAction = InputSystem.actions.FindAction("Interact");
 
-        // Search the scene for objects
-        leftSide = GameObject.FindGameObjectWithTag("left tp");
-        rightSide = GameObject.FindGameObjectWithTag("right tp");
-        cine = GameObject.FindGameObjectWithTag("Cinemachine").GetComponent<CinemachineCamera>();
+        scale = tf.localScale.x;
+        SetupPlayer();
 
+        // Saves player data
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetupPlayer() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+            if (p != gameObject)
+                Destroy(p);
+
+        // Search the scene for objects
+        collectionAnimator = GameObject.FindWithTag("Collection").GetComponent<Animator>();
+        leftSide = GameObject.FindWithTag("left tp");
+        rightSide = GameObject.FindWithTag("right tp");
+        cine = GameObject.FindWithTag("Cinemachine").GetComponent<CinemachineCamera>();
+        cine.Target.TrackingTarget = transform;
+        
         // Check for missing - if so force error
         if (leftSide == null || rightSide == null || cine == null)
             Debug.LogWarning("Failed to find core GameObjects in scene");
 
         // Calculate constants
         mapSize = rightSide.transform.position.x - leftSide.transform.position.x;
-        scale = tf.localScale.x;
-
-        // Saves player data
-        DontDestroyOnLoad(gameObject);
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
     // FixedUpdate called at a fixed framerate (typically 60fps) for smoothed physics
@@ -180,15 +194,5 @@ public class CharacterController : MonoBehaviour {
         Vector3 pos = cine.gameObject.transform.position + translation;
         Quaternion quart = cine.gameObject.transform.rotation;
         cine.ForceCameraPosition(pos, quart);
-    }
-
-
-
-    // Inventory Manager Helpers
-    public void DropItem(int i) {
-        inventoryManager.DropItem(i);
-    }
-    public void Spawn(GameObject go) {
-        Instantiate(go, transform.position, Quaternion.identity);
     }
 }
