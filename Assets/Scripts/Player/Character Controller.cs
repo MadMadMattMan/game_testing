@@ -141,20 +141,19 @@ public class CharacterController : MonoBehaviour {
     }
     void Interact(bool input) {
         if (input && triggerOverlaps.Count > 0) {
-            foreach (GameObject t in triggerOverlaps) {
-                Interactable i;
-                if (t.TryGetComponent<Interactable>(out i)) {
-                    i.Interact(gameObject);
-                }
+            for (int i = 0; i < triggerOverlaps.Count; i++) {
+                GameObject t = triggerOverlaps[i];
+                Interactable interactable;
+                if (t.TryGetComponent<Interactable>(out interactable))
+                    interactable.Interact(gameObject);
             }
         }
     }
     void Animations() {
         amr.SetFloat("MoveSpeed", Mathf.Abs(xVelocity));
-        if (isGrounded && !pastGrounded) {
+        if (isGrounded && !pastGrounded)
             amr.SetTrigger("Landing");
-        }
-
+        
         pastGrounded = isGrounded; // Set up for next update
     }
     void Teleport() {
@@ -190,7 +189,6 @@ public class CharacterController : MonoBehaviour {
         inventoryManager.DropItem(i);
     }
     public void Spawn(GameObject go) {
-        Debug.Log("Instanciating go " + go.name);
-        Instantiate(go);
+        Instantiate(go, transform.position, Quaternion.identity);
     }
 }
