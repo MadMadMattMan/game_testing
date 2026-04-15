@@ -9,6 +9,13 @@ public class PauseManager : MonoBehaviour {
 
     InputAction pauseAction;
 
+    void Awake() {
+        if (GameObject.FindGameObjectsWithTag("Manager").Length > 1) {
+            Destroy(PauseMenu);
+            Destroy(gameObject);
+        }
+    }
+
     void Start() {
         // Marks the pause objects as keep when changing scenes
         DontDestroyOnLoad(gameObject);

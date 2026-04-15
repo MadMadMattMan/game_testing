@@ -9,6 +9,8 @@ TagManager:
   - Cinemachine
   - ground
   - Manager
+  - Build
+  - Collection
   layers:
   - Default
   - TransparentFX
