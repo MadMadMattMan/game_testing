@@ -10,12 +10,14 @@ public struct Collectable {
     public item item;
     public atribute boostAtribute;
     public float boostAmount;
+    public GameObject prefab;
 
-    public Collectable(Sprite sprite, item item, atribute boost, float amount) {
+    public Collectable(Sprite sprite, item item, atribute boost, float amount, GameObject prefab) {
         this.sprite = sprite;
         this.item = item;
         this.boostAtribute = boost;
         this.boostAmount = amount;
+        this.prefab = prefab;
     }
 }
 

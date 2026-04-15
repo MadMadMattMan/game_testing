@@ -19,10 +19,10 @@ public class TestInteractable : MonoBehaviour, Interactable
         if (makedForDestruction) 
             Destroy(gameObject);
     }
-    public void Interact(InventoryManager inventory) {
+    public void Interact(GameObject player) {
         Debug.Log(debugMessage);
         if (destroyOnInteract) 
             makedForDestruction = true;
-        inventory.AddItem(collecableSettings);
+        player.GetComponent<CharacterController>().inventoryManager.AddItem(collecableSettings);
     }
 }
