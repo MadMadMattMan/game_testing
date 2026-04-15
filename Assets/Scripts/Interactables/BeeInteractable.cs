@@ -7,6 +7,7 @@ public class BeeInteractable : MonoBehaviour, Interactable {
     
     Collider2D col;
     SpringJoint2D spr;
+    bool interacted = false;
 
     void Awake() {
         if (!TryGetComponent<Collider2D>(out col)) // if failed to get existing collider, add one
@@ -27,6 +28,8 @@ public class BeeInteractable : MonoBehaviour, Interactable {
     }
 
     public void Interact(GameObject player) {
-        sceneChanger.BeeTaxiChange();
+        if (!interacted)
+            sceneChanger.BeeTaxiChange();
+        interacted = true;
     }
 }

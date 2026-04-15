@@ -22,13 +22,16 @@ public class SceneChanger : MonoBehaviour {
     }
 
     public void BeeTaxiChange() {
+        stage++;
         bee.GetComponent<Animator>().SetTrigger("Bee Trigger");
         StartCoroutine(BeePause());
     }
     IEnumerator BeePause() {
-        stage++;
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.5f);
+        Destroy(bee);
+        player.transform.position = Vector3.zero;
+        yield return SceneManager.LoadSceneAsync(sceneOrder[stage]);
 
-        SceneManager.LoadScene(sceneOrder[stage]);
+        player.GetComponent<CharacterController>().SetupPlayer();
     }
 }

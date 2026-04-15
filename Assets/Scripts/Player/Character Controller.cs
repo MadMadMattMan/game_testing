@@ -74,6 +74,7 @@ public class CharacterController : MonoBehaviour {
     }
 
     public void SetupPlayer() {
+        // Get rid of extra players
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
             if (p != gameObject)
