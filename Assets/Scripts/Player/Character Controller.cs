@@ -48,7 +48,6 @@ public class CharacterController : MonoBehaviour {
         amr = GetComponent<Animator>();
         tf = GetComponent<Transform>();
         col = GetComponent<BoxCollider2D>();
-        inventoryManager.InitializeInventory();
 
         // Check for missing - if so force error
         if (rb == null || amr == null || tf == null || col == null)
@@ -57,6 +56,8 @@ public class CharacterController : MonoBehaviour {
 
     // Start called before first frame of game, used to initialize values
     void Start() {
+        inventoryManager.InitializeInventory(this);
+
         // Get inputs
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
@@ -75,6 +76,9 @@ public class CharacterController : MonoBehaviour {
         // Calculate constants
         mapSize = rightSide.transform.position.x - leftSide.transform.position.x;
         scale = tf.localScale.x;
+
+        // Saves player data
+        DontDestroyOnLoad(gameObject);
     }
 
     // FixedUpdate called at a fixed framerate (typically 60fps) for smoothed physics
@@ -126,8 +130,8 @@ public class CharacterController : MonoBehaviour {
         else 
             isGrounded = false;
 
-                // set gravity
-                Physics2D.gravity = new Vector2(0, -gravity);
+        // set gravity
+        Physics2D.gravity = new Vector2(0, -gravity);
 
         // handle input
         if (input && isGrounded) {
@@ -140,7 +144,7 @@ public class CharacterController : MonoBehaviour {
             foreach (GameObject t in triggerOverlaps) {
                 Interactable i;
                 if (t.TryGetComponent<Interactable>(out i)) {
-                    i.Interact(inventoryManager);
+                    i.Interact(gameObject);
                 }
             }
         }
@@ -177,5 +181,16 @@ public class CharacterController : MonoBehaviour {
         Vector3 pos = cine.gameObject.transform.position + translation;
         Quaternion quart = cine.gameObject.transform.rotation;
         cine.ForceCameraPosition(pos, quart);
+    }
+
+
+
+    // Inventory Manager Helpers
+    public void DropItem(int i) {
+        inventoryManager.DropItem(i);
+    }
+    public void Spawn(GameObject go) {
+        Debug.Log("Instanciating go " + go.name);
+        Instantiate(go);
     }
 }

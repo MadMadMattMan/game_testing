@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface Interactable {
-    public void Interact(InventoryManager inventory);
+    public void Interact(GameObject player);
 }

@@ -8,6 +8,7 @@ TagManager:
   - right tp
   - Cinemachine
   - ground
+  - Manager
   layers:
   - Default
   - TransparentFX
