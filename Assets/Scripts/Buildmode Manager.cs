@@ -1,4 +1,4 @@
-using UnityEngine;
+/**using UnityEngine;
 
 public class BuildmodeManager : MonoBehaviour {
     // References
@@ -17,4 +17,4 @@ public class BuildmodeManager : MonoBehaviour {
     public void Exit(string targetScene) {
         Managers.GetComponent<SceneChanger>().ChangeScene(targetScene);
     }
-}
+}*/
