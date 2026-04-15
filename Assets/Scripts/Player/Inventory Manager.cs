@@ -33,7 +33,8 @@ public class InventoryManager {
     public void DropItem(int i) {
         Debug.Log("Dropping item from index " + i);
         Collectable item = inventory[i];
-        controller.Spawn(item.prefab);
+        if (item.obj != null)
+            controller.Spawn(item.obj);
         RemoveItem(item);
     }
     public bool RemoveItem(int i)

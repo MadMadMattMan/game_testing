@@ -111,4 +111,4 @@ MonoBehaviour:
     item: 0
     boostAtribute: 1
     boostAmount: 50
-    prefab: {fileID: 242185770046311170}
+    obj: {fileID: 242185770046311170}
