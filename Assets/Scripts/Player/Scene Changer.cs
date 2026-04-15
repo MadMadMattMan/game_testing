@@ -1,37 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
-
-    Dictionary<string, bool> isPlayable = new Dictionary<string, bool>();
-    GameObject player;
-    GameObject build;
+    public List<string> sceneOrder = new List<string>();
+    public int stage = 0; // tutorial stage
+    [SerializeField] GameObject player, bee;
 
     private void Awake() {
         player = GameObject.FindWithTag("Player");
-        build = GameObject.FindWithTag("Build");
-
-        // Add scenes with their player state bools
-        isPlayable.Add("Main Scene", true);
-        isPlayable.Add("Basic House Interior", false);
     }
 
-    public void ChangeScene(string scene) {
-        if (isPlayable.ContainsKey(scene)) {
-            SceneManager.LoadScene(scene);
-            bool playable = isPlayable[scene];
-            if (playable)
-                StartCoroutine(SetupDelayed());
-            else
-                player.SetActive(false);
+    private void LateUpdate() {
+        try {
+            if (bee == null)
+                bee = GameObject.FindWithTag("Bee");
         }
+        catch {}
     }
-    IEnumerator SetupDelayed()
-    {
-        yield return new WaitForSeconds(0.01f);
-        player.SetActive(true);
-        player.GetComponent<CharacterController>().SetupPlayer();
+
+    public void BeeTaxiChange() {
+        bee.GetComponent<Animator>().SetTrigger("Bee Trigger");
+        StartCoroutine(BeePause());
+    }
+    IEnumerator BeePause() {
+        stage++;
+        yield return new WaitForSeconds(5.0f);
+
+        SceneManager.LoadScene(sceneOrder[stage]);
     }
 }

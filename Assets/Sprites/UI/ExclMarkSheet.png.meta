@@ -163,12 +163,12 @@ TextureImporter:
       name: ExclMarkSheet_0
       rect:
         serializedVersion: 2
-        x: 69
-        y: 59
-        width: 22
-        height: 92
+        x: 0
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -185,12 +185,12 @@ TextureImporter:
       name: ExclMarkSheet_1
       rect:
         serializedVersion: 2
-        x: 229
-        y: 49
-        width: 22
-        height: 92
+        x: 160
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,12 +207,12 @@ TextureImporter:
       name: ExclMarkSheet_2
       rect:
         serializedVersion: 2
-        x: 389
-        y: 39
-        width: 22
-        height: 92
+        x: 320
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: ExclMarkSheet_3
       rect:
         serializedVersion: 2
-        x: 549
-        y: 49
-        width: 22
-        height: 92
+        x: 480
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,99 +247,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ExclMarkSheet_4
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 29
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9774a1c4561bc3030800000000000000
-      internalID: 3475848061049784185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExclMarkSheet_5
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 19
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 024c7f4b6998f89c0800000000000000
-      internalID: -3922765470042176480
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExclMarkSheet_6
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 9
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c54bbf0d5779c26e0800000000000000
-      internalID: -1860946013737733028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExclMarkSheet_7
-      rect:
-        serializedVersion: 2
-        x: 549
-        y: 19
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 983873c10ec3e3c50800000000000000
-      internalID: 6646817033289171849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a3a772ddfcaa50d488c8ff4bc5ca250a
     internalID: 0
     vertices: []
     indices: 
@@ -347,16 +259,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       ExclMarkSheet_0: 367828815218335914
       ExclMarkSheet_1: 7690347586016526004
       ExclMarkSheet_2: 6709217080041912625
       ExclMarkSheet_3: -3155273223749564482
-      ExclMarkSheet_4: 3475848061049784185
-      ExclMarkSheet_5: -3922765470042176480
-      ExclMarkSheet_6: -1860946013737733028
-      ExclMarkSheet_7: 6646817033289171849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

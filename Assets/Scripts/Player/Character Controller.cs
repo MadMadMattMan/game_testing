@@ -181,6 +181,10 @@ public class CharacterController : MonoBehaviour {
         }
     }
 
+    public void BeeTaxiTakeoff() {
+
+    }
+
     // Event methods
     private void OnTriggerEnter2D(Collider2D trigger) {
         triggerOverlaps.Add(trigger.gameObject);
