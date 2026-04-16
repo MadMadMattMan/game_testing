@@ -8,10 +8,10 @@ public class NPCManager : MonoBehaviour
     CharacterController player;
     InventoryManager inventory;
     Animator beeAnimator;
-    [SerializeField] HashSet<string> playerItems = new HashSet<string>();
-    [SerializeField] bool inChat = false;
-    [SerializeField] int chatStage = 0;
-    [SerializeField] int chatString = 0;
+    HashSet<string> playerItems = new HashSet<string>();
+    bool inChat = false;
+    int chatStage = 0;
+    int chatString = 0;
 
 
     [Header("Dialouge")]
@@ -53,8 +53,7 @@ public class NPCManager : MonoBehaviour
             chatOption = goAwayDialouge;
 
         // check for current empty chat, if so skip list
-        if (chatOption.Count == 0)
-        {
+        if (chatOption.Count == 0) {
             chatStage++;
             ProgressChat();
             return;
@@ -81,8 +80,13 @@ public class NPCManager : MonoBehaviour
             }
             // Check if tracker contains required items, if not loop chat
             foreach (string item in requiredItemsForUnlock) {
-                if (!playerItems.Contains(item))
+                if (!playerItems.Contains(item)) {
+                    chatString = 0;
+                    inChat = false;
+                    chatObject.SetActive(false);
                     return;
+                }
+                    
             }
         }
         chatStage++;
