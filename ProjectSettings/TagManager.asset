@@ -12,6 +12,7 @@ TagManager:
   - Build
   - Collection
   - Bee
+  - Credits
   layers:
   - Default
   - TransparentFX

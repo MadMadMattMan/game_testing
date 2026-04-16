@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour {
-    public GameObject PauseMenu; // The pause Menu Canvas
+    public GameObject PauseMenu, CreditsPanel; // The pause Menu Canvas
     [SerializeField] bool paused = false;
     bool pressed = false; // tracker to avoid spam toggle
+    bool credits = false;
 
     InputAction pauseAction;
 
@@ -44,7 +45,13 @@ public class PauseManager : MonoBehaviour {
         else {
             Time.timeScale = 1f;
             PauseMenu.SetActive(false);
+            if (credits) Credits();
         }
+    }
+
+    public void Credits() {
+        credits = !credits;
+        CreditsPanel.SetActive(credits);
     }
 
     public void Quit() {
