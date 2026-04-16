@@ -6,6 +6,7 @@ using UnityEngine;
 public struct Collectable {
     public static Collectable empty = new Collectable();
 
+    public string name;
     public Sprite ground;
     public Sprite small;
     public Sprite big;

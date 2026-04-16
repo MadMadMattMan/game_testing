@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 2b07d5e1efceef34cbf954e9e1e9011e
+guid: 16c9d37b736a41b4a85f8b1008018c69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2597030826705400196
-    second: NPC1-IDLE-Sheet_0
-  - first:
-      213: 2719542408555497248
-    second: NPC1-IDLE-Sheet_1
-  - first:
-      213: 5338418403731964367
-    second: NPC1-IDLE-Sheet_2
-  - first:
-      213: -7231489777532500703
-    second: NPC1-IDLE-Sheet_3
+      213: -8993744686479527295
+    second: FUNGALCHATBOX_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -148,89 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC1-IDLE-Sheet_0
+      name: FUNGALCHATBOX_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 200
-        height: 200
+        x: 29
+        y: 19
+        width: 1132
+        height: 432
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 481b388f6c18a0420800000000000000
-      internalID: 2597030826705400196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC1-IDLE-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0278f8d6961cdb520800000000000000
-      internalID: 2719542408555497248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC1-IDLE-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc10ad8014fd51a40800000000000000
-      internalID: 5338418403731964367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC1-IDLE-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1258e458c5694ab90800000000000000
-      internalID: -7231489777532500703
+      spriteID: 182b4d9cbdccf2380800000000000000
+      internalID: -8993744686479527295
       vertices: []
       indices: 
       edges: []
@@ -239,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1cbef19828c624c43b104d30981865c2
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -247,14 +172,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":200.0,"y":200.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      NPC1-IDLE-Sheet_0: 2597030826705400196
-      NPC1-IDLE-Sheet_1: 2719542408555497248
-      NPC1-IDLE-Sheet_2: 5338418403731964367
-      NPC1-IDLE-Sheet_3: -7231489777532500703
+      FUNGALCHATBOX_0: -8993744686479527295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
