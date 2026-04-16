@@ -19,7 +19,7 @@ public class InventoryManager {
             if (inventory[i].Equals(Collectable.empty)) { // add item to first available slot
                 inventory.SetValue(item, i);
                 ApplyItemEffects(item);
-                inventorySlots[i].sprite = item.sprite; // set graphics of slot
+                inventorySlots[i].sprite = item.small; // set graphics of slot
                 inventorySlots[i].color = new Color(255, 255, 255, 255);
                 return true;
             }
