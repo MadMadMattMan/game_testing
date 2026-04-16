@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b5e83b3d953b4db6e3cdf2c203748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectInteractable
-  interactableName: Base Collectable
   destroyOnInteract: 1
   collecableSettings:
+    name: Base Collectable
     ground: {fileID: 21300000, guid: e04556fdd54c57747bb3dd37b2e0075a, type: 3}
     small: {fileID: 21300000, guid: e04556fdd54c57747bb3dd37b2e0075a, type: 3}
     big: {fileID: 21300000, guid: f6dd7c91034afb746ac4327263bc84ab, type: 3}

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BeeInteractable : MonoBehaviour, Interactable {
 
-    GameObject player;
     SceneChanger sceneChanger;
     
     Collider2D col;
@@ -14,7 +13,7 @@ public class BeeInteractable : MonoBehaviour, Interactable {
             col = gameObject.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
 
-        player = GameObject.FindWithTag("Player");
+        GameObject player = GameObject.FindWithTag("Player");
 
         if (!TryGetComponent<SpringJoint2D>(out spr)) // if failed to get existing spring, add one
             spr = gameObject.AddComponent<SpringJoint2D>();

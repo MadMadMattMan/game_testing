@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CollectInteractable : MonoBehaviour, Interactable
 {
-    [SerializeField] string interactableName = "Basic Collectable";
     [SerializeField] bool destroyOnInteract = true;
     bool makedForDestruction = false;
 
@@ -34,7 +33,7 @@ public class CollectInteractable : MonoBehaviour, Interactable
             Destroy(gameObject);
     }
     public void Interact(GameObject player) {
-        Debug.Log("Collected: " + interactableName);
+        Debug.Log("Collected: " + collecableSettings.name);
         amr.SetTrigger("Interacted");
         inventoryManager = player.GetComponent<CharacterController>().inventoryManager;
         smallItem.sprite = null;
