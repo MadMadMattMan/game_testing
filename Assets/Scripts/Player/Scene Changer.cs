@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
     public List<string> sceneOrder = new List<string>();
-    public int stage = 0; // tutorial stage
+    public int stage = 1; // tutorial stage
     [SerializeField] GameObject player, bee;
 
     private void Awake() {
@@ -27,11 +26,35 @@ public class SceneChanger : MonoBehaviour {
         StartCoroutine(BeePause());
     }
     IEnumerator BeePause() {
+        Debug.Log("Starting bee pause");
+        CharacterController charControl = player.GetComponent<CharacterController>();
+        charControl.loadingMode = true;
+        Debug.Log(charControl + " load set true");
         yield return new WaitForSeconds(3.5f);
-        Destroy(bee);
-        player.transform.position = Vector3.zero;
-        yield return SceneManager.LoadSceneAsync(sceneOrder[stage]);
 
-        player.GetComponent<CharacterController>().SetupPlayer();
+        Debug.Log("Delay passed");
+        bee.GetComponent<BeeInteractable>().spr.enabled = false;
+        Debug.Log("Disabled Spring");
+        Destroy(bee);
+        Debug.Log("Bee gone :(");
+        yield return null;
+
+        //Start loading new scene
+        Debug.Log("Checking load for: " + stage + "/" + sceneOrder[stage]);
+        if (sceneOrder[stage] == null || stage >= sceneOrder.Count)
+            Debug.LogWarning("Invalid Scene to be loaded: " + sceneOrder[stage]);
+
+        // Start loading scene asynchronously
+        Debug.Log("Starting async load: " + sceneOrder[stage]);
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneOrder[stage]);
+        while (!op.isDone) {
+            Debug.Log("Progress: " + op.progress);
+            yield return null;
+        }
+        Debug.Log("Scene loaded: " + sceneOrder[stage]);
+        yield return null;
+
+        charControl.SetupPlayer();
+        charControl.loadingMode = false;
     }
 }

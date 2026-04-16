@@ -1,6 +1,6 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
     public GameObject PauseMenu, CreditsPanel; // The pause Menu Canvas
@@ -18,21 +18,25 @@ public class PauseManager : MonoBehaviour {
     }
 
     void Start() {
-        // Marks the pause objects as keep when changing scenes
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(PauseMenu);
-        pauseAction = InputSystem.actions.FindAction("Pause");
+        if (PauseMenu != null) {
+            // Marks the pause objects as keep when changing scenes
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(PauseMenu);
+            pauseAction = InputSystem.actions.FindAction("Pause");
+        }
     }
 
     void Update() {
-        if (pauseAction.IsPressed() && !pressed) {
-            TogglePause();
-            pressed = true;
+        if (PauseMenu != null) {
+            if (pauseAction.IsPressed() && !pressed)
+            {
+                TogglePause();
+                pressed = true;
+            }
+            else if (!pauseAction.IsPressed() && pressed)
+                pressed = false;
         }
-        else if (!pauseAction.IsPressed() && pressed)
-            pressed = false;
     }
-
 
     public void TogglePause() {
         Debug.Log("Pause Toggled");
@@ -56,5 +60,9 @@ public class PauseManager : MonoBehaviour {
 
     public void Quit() {
         Application.Quit();
+    }
+
+    public void StartGame() {
+        SceneManager.LoadScene("Main Scene");
     }
 }

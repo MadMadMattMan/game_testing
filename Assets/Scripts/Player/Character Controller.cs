@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -33,6 +34,8 @@ public class CharacterController : MonoBehaviour {
     // looping
     GameObject leftSide, rightSide;
     float mapSize; // calculated at runtime
+    public bool loadingMode = false;
+    bool firstStart = true;
 
     // private references
     [SerializeField] Rigidbody2D rb;
@@ -56,38 +59,37 @@ public class CharacterController : MonoBehaviour {
 
     // Start called before first frame of game, used to initialize values
     void Start() {
-        inventoryManager.InitializeInventory(this);
-        scale = tf.localScale.x;
+        if (firstStart) {
+            inventoryManager.InitializeInventory(this);
+            scale = tf.localScale.x;
 
-        // Get inputs
-        moveAction = InputSystem.actions.FindAction("Move");
-        sprintAction = InputSystem.actions.FindAction("Sprint");
-        jumpAction = InputSystem.actions.FindAction("Jump");
-        interactAction = InputSystem.actions.FindAction("Interact");
+            // Get inputs
+            moveAction = InputSystem.actions.FindAction("Move");
+            sprintAction = InputSystem.actions.FindAction("Sprint");
+            jumpAction = InputSystem.actions.FindAction("Jump");
+            interactAction = InputSystem.actions.FindAction("Interact");
 
-        scale = tf.localScale.x;
-        SetupPlayer();
+            scale = tf.localScale.x;
+            SetupPlayer();
 
-        // Saves player data
-        DontDestroyOnLoad(gameObject);
+            // Saves player data
+            DontDestroyOnLoad(gameObject);
+            firstStart = false;
+        }
     }
 
     public void SetupPlayer() {
-        // Get rid of extra players
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject p in players)
-            if (p != gameObject)
-                Destroy(p);
-
         // Search the scene for objects
         leftSide = GameObject.FindWithTag("left tp");
         rightSide = GameObject.FindWithTag("right tp");
         cine = GameObject.FindWithTag("Cinemachine").GetComponent<CinemachineCamera>();
-        cine.Target.TrackingTarget = transform;
-        
+
         // Check for missing - if so force error
-        if (leftSide == null || rightSide == null || cine == null)
-            Debug.LogWarning("Failed to find core GameObjects in scene");
+        if (leftSide == null || rightSide == null || cine == null) {
+            Debug.LogError("Failed playersetup");
+            return;
+        }
+        cine.Target.TrackingTarget = transform;
 
         // Calculate constants
         mapSize = rightSide.transform.position.x - leftSide.transform.position.x;
@@ -96,6 +98,8 @@ public class CharacterController : MonoBehaviour {
 
     // FixedUpdate called at a fixed framerate (typically 60fps) for smoothed physics
     void FixedUpdate() {
+        if (loadingMode) return;
+
         // Collect inputs
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
         bool jumpInput = jumpAction.IsPressed();
@@ -136,7 +140,7 @@ public class CharacterController : MonoBehaviour {
     void JumpCharacter(bool input) {
         // async event handler for coyote time
         Vector3 startpos = new Vector2(tf.position.x, tf.position.y - (col.size.y * tf.localScale.y / 2) -0.01f);
-        RaycastHit2D rch = Physics2D.Raycast(startpos, Vector2.down, groundedDistance);
+        RaycastHit2D rch = Physics2D.Raycast(startpos, Vector2.down, groundedDistance, LayerMask.NameToLayer("ground"));
         Debug.DrawRay(startpos, Vector2.down * groundedDistance, rch ? Color.green : Color.red, 0.05f);
         if (rch && rch.collider.tag.Equals("ground") && rch.collider != col)
             isGrounded = true;
@@ -170,6 +174,8 @@ public class CharacterController : MonoBehaviour {
         pastGrounded = isGrounded; // Set up for next update
     }
     void Teleport() {
+        if (leftSide == null || rightSide == null || loadingMode) return;
+
         if (tf.position.x < leftSide.transform.position.x && xVelocity < 0) {
             tf.Translate(Vector3.right * mapSize);
             TranslateCinemachinePos(Vector3.right * mapSize);
@@ -178,10 +184,6 @@ public class CharacterController : MonoBehaviour {
             tf.Translate(Vector3.left * mapSize);
             TranslateCinemachinePos(Vector3.left * mapSize);
         }
-    }
-
-    public void BeeTaxiTakeoff() {
-
     }
 
     // Event methods
@@ -194,6 +196,8 @@ public class CharacterController : MonoBehaviour {
 
     // Method helps translate the cinemachine camera (can't edit cinemachine transform like normal objs)
     void TranslateCinemachinePos(Vector3 translation) {
+        if (cine == null) return;
+
         Vector3 pos = cine.gameObject.transform.position + translation;
         Quaternion quart = cine.gameObject.transform.rotation;
         cine.ForceCameraPosition(pos, quart);

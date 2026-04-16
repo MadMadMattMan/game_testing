@@ -1,7 +1,7 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
-using UnityEditor.SceneManagement;
 
 public class NPCManager : MonoBehaviour
 {
@@ -24,8 +24,14 @@ public class NPCManager : MonoBehaviour
     [SerializeField] List<string> requiredItemsForUnlock = new List<string>();
     [SerializeField] GameObject chatObject;
     TextMeshProUGUI chatbox;
+    [SerializeField] GameObject exclMark;
 
     void Awake() {
+        StartCoroutine(AsyncAwake());
+    }
+
+    IEnumerator AsyncAwake() {
+        yield return new WaitForFixedUpdate();
         player = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
         inventory = player.inventoryManager;
         chatbox = chatObject.GetComponentInChildren<TextMeshProUGUI>();
@@ -93,7 +99,9 @@ public class NPCManager : MonoBehaviour
         chatString = 0;
         inChat = false;
         chatObject.SetActive(false);
-        if (chatStage == 3)
+        if (chatStage == 3) {
             beeAnimator.SetTrigger("Create Bee");
+            exclMark.SetActive(false);
+        }
     }
 }
