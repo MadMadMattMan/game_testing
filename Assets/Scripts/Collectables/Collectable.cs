@@ -2,28 +2,22 @@ using UnityEditor;
 using UnityEngine;
 
 
-[System.Serializable] // alows display in inspector
+[System.Serializable] // alows edit in inspector
 public struct Collectable {
     public static Collectable empty = new Collectable();
 
-    public Sprite sprite;
-    public Animation collectAnimation;
+    public Sprite ground;
+    public Sprite small;
+    public Sprite big;
 
-    public atribute boostAtribute;
-    public float boostAmount;
-    public GameObject obj;
-
-    public Collectable(Sprite sprite, Animation animation, atribute boost, float amount, GameObject prefab) {
-        this.sprite = sprite;
-        this.collectAnimation = animation;
-        this.boostAtribute = boost;
-        this.boostAmount = amount;
-        this.obj = prefab;
-    }
+    //public atribute boostAtribute;
+    //public float boostAmount;
+    //public GameObject obj;
 }
 
 public enum atribute {
     none,
-    speedMulti,
-    jumpMulit
+    walkBoost,
+    runBoost,
+    jumpBoost
 }

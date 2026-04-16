@@ -41,7 +41,6 @@ public class CharacterController : MonoBehaviour {
     [SerializeField] Transform tf;
     [SerializeField] CinemachineCamera cine;
     [SerializeField] List<GameObject> triggerOverlaps = new List<GameObject>();
-    [HideInInspector] public Animator collectionAnimator;
 
     // Awake is called when script is initialized
     void Awake() {
@@ -74,13 +73,13 @@ public class CharacterController : MonoBehaviour {
     }
 
     public void SetupPlayer() {
+        // Get rid of extra players
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
             if (p != gameObject)
                 Destroy(p);
 
         // Search the scene for objects
-        collectionAnimator = GameObject.FindWithTag("Collection").GetComponent<Animator>();
         leftSide = GameObject.FindWithTag("left tp");
         rightSide = GameObject.FindWithTag("right tp");
         cine = GameObject.FindWithTag("Cinemachine").GetComponent<CinemachineCamera>();

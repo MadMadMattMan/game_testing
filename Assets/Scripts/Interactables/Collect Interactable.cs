@@ -1,11 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class CollectInteractable : MonoBehaviour, Interactable
 {
-    [SerializeField] string interactableName = "Item";
+    [SerializeField] string interactableName = "Basic Collectable";
     [SerializeField] bool destroyOnInteract = true;
     bool makedForDestruction = false;
+
     [SerializeField] Collectable collecableSettings;
+    SpriteRenderer smallItem;
+    UnityEngine.UI.Image largeItem;
+    Animator amr;
+    InventoryManager inventoryManager;
 
     // check and force add a trigger to this object on awake
     void Awake() {
@@ -13,6 +19,14 @@ public class CollectInteractable : MonoBehaviour, Interactable
         if (!TryGetComponent<Collider2D>(out col)) // if failed to get existing collider, add one
             col = gameObject.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
+
+        amr = GetComponent<Animator>();
+
+        smallItem = GetComponentInChildren<SpriteRenderer>();
+        smallItem.sprite = collecableSettings.ground;
+
+        largeItem = GetComponentInChildren<UnityEngine.UI.Image>();
+        largeItem.sprite = collecableSettings.big;
     }
     // last call before end of frame, helps avoid referencing errors if destruction happens here
     void LateUpdate() {
@@ -20,10 +34,18 @@ public class CollectInteractable : MonoBehaviour, Interactable
             Destroy(gameObject);
     }
     public void Interact(GameObject player) {
-        Debug.Log("Collected" + interactableName);
-        if (destroyOnInteract) 
-            makedForDestruction = true;
-        player.GetComponent<CharacterController>().collectionAnimator.SetTrigger(interactableName);
-        player.GetComponent<CharacterController>().inventoryManager.AddItem(collecableSettings);
+        Debug.Log("Collected: " + interactableName);
+        amr.SetTrigger("Interacted");
+        inventoryManager = player.GetComponent<CharacterController>().inventoryManager;
+        smallItem.sprite = null;
+    }
+    public void Confirm() {
+        StartCoroutine(ConfirmDelayed());
+    }
+    public IEnumerator ConfirmDelayed() {
+        amr.SetTrigger("Collected");
+        yield return new WaitForSeconds(3.0f);
+        inventoryManager.AddItem(collecableSettings);
+        makedForDestruction = destroyOnInteract;
     }
 }
