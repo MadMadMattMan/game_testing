@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BeeInteractable : MonoBehaviour, Interactable {
@@ -5,10 +6,15 @@ public class BeeInteractable : MonoBehaviour, Interactable {
     SceneChanger sceneChanger;
     
     Collider2D col;
-    SpringJoint2D spr;
+    [HideInInspector] public SpringJoint2D spr;
     bool interacted = false;
 
     void Awake() {
+        StartCoroutine(AsyncAwake());
+    }
+
+    IEnumerator AsyncAwake() {
+        yield return new WaitForFixedUpdate();
         if (!TryGetComponent<Collider2D>(out col)) // if failed to get existing collider, add one
             col = gameObject.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
