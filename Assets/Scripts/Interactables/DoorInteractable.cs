@@ -5,36 +5,28 @@ using UnityEngine.SceneManagement;
 public class DoorInteractable : MonoBehaviour, Interactable
 {
 
-    [SerializeField] Animator fadeAnimation;
+    [SerializeField] GameObject fadeAnimation;
     GameObject managers, player;
-
-    public bool interacting = false;
+    bool interacting = false;
 
     void Awake() {
         managers = GameObject.FindWithTag("Manager");
         player = GameObject.FindWithTag("Player");
     }
 
-    void Update()
-    {
-        if (interacting) { 
-            interacting = false;
-            Interact(player);
-        }
-    }
-
     public void Interact(GameObject player)
     {
         if (!interacting) {
             StartCoroutine(EndAnimationPause());
+            interacting = true;
         }
     }
 
     IEnumerator EndAnimationPause() {
         fadeAnimation.gameObject.SetActive(true);
-        fadeAnimation.SetTrigger("fade out");
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(10.0f);
 
+        player.GetComponent<CharacterController>().loadingMode = true;
         Destroy(player);
         Destroy(managers.GetComponent<PauseManager>().PauseMenu);
         Destroy(managers);

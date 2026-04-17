@@ -55,7 +55,10 @@ public class SceneChanger : MonoBehaviour {
         yield return null;
 
         charControl.SetupPlayer();
-        charControl.loadingMode = false;
+        if (stage == 2) charControl.inCave = true;
+        else charControl.inCave = false;
+            charControl.loadingMode = false;
+
         GetComponent<PauseManager>().UpdateSound();
     }
 }

@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772c2036d0cb7446b649c126e92d28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
-  fadeAnimation: {fileID: 1788364396}
+  fadeAnimation: {fileID: 1788364391}
   interacting: 0
 --- !u!114 &4628645450258721301
 MonoBehaviour:

@@ -31,6 +31,13 @@ public class CharacterController : MonoBehaviour {
     [Header("Inventory Settings")]
     public InventoryManager inventoryManager;
 
+    [Header("Audio")]
+    public bool inCave = false;
+    [SerializeField] float walkPitch = 1f, runPitch = 1.2f;
+    [SerializeField] AudioSource walkSource;
+    [SerializeField] AudioClip walk, caveWalk;
+    [SerializeField] bool isPlaying = false;
+
     [Header("Other")]
     // looping
     GameObject leftSide, rightSide;
@@ -125,6 +132,9 @@ public class CharacterController : MonoBehaviour {
         // Apply movement changes
         transform.Translate(new Vector2(xVelocity, 0) * Time.deltaTime);
         transform.localScale = new Vector3(xFlip*scale, scale); // flip the char to move dir
+
+        // Sound
+        if (!isPlaying) StartCoroutine(PlayWalkCycle(moveVector.magnitude > epsilon, sprintInput));
 
         // Run final checks
         Animations(false);
@@ -232,5 +242,24 @@ public class CharacterController : MonoBehaviour {
         Vector3 pos = cine.gameObject.transform.position + translation;
         Quaternion quart = cine.gameObject.transform.rotation;
         cine.ForceCameraPosition(pos, quart);
+    }
+
+    IEnumerator PlayWalkCycle(bool moving, bool sprinting) {
+        if (!moving) {
+            walkSource.Stop();
+            isPlaying = false;
+            yield return null;
+        }
+        else {
+            isPlaying = true;
+            float pitch = (sprinting ? runPitch : walkPitch);
+            walkSource.pitch = pitch + (0.03f * Random.Range(-3, 3));
+            walkSource.clip = inCave ? caveWalk : walk;
+            walkSource.volume = inCave ? 0.2f : 0.5f;
+            walkSource.Play();
+            yield return new WaitForSeconds(0.4f/pitch);
+            walkSource.Stop();
+            isPlaying = false;
+        }
     }
 }

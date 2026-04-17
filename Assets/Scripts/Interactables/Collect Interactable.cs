@@ -11,6 +11,7 @@ public class CollectInteractable : MonoBehaviour, Interactable
     UnityEngine.UI.Image largeItem;
     Animator amr;
     InventoryManager inventoryManager;
+    AudioSource adoSource;
 
     // check and force add a trigger to this object on awake
     void Awake() {
@@ -19,6 +20,8 @@ public class CollectInteractable : MonoBehaviour, Interactable
         if (!renderer.gameObject.TryGetComponent<Collider2D>(out col))
             col = renderer.gameObject.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
+
+        adoSource = GetComponentInChildren<AudioSource>();
 
         amr = GetComponent<Animator>();
 
@@ -30,12 +33,15 @@ public class CollectInteractable : MonoBehaviour, Interactable
     }
     // last call before end of frame, helps avoid referencing errors if destruction happens here
     void LateUpdate() {
-        if (makedForDestruction) 
+        if (makedForDestruction) {
+            adoSource.Stop();
             Destroy(gameObject);
+        }
     }
     public void Interact(GameObject player) {
         Debug.Log("Collected: " + collecableSettings.name);
         amr.SetTrigger("Interacted");
+        adoSource.Play();
         inventoryManager = player.GetComponent<CharacterController>().inventoryManager;
         smallItem.sprite = null;
         StartCoroutine(CollectDelayed());
