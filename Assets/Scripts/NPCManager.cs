@@ -40,6 +40,27 @@ public class NPCManager : MonoBehaviour
 
     public void Interact() {
         if (!inChat) {
+            // inventory check 
+            if (chatStage == 1) {
+                Debug.Log("Checking inventory");
+                // Add new inventory items to tracker
+                foreach (var item in inventory.inventory)
+                {
+                    string name = item.name;
+                    if (!playerItems.Contains(name))
+                        playerItems.Add(name);
+                }
+                // Check if tracker contains required items, if not loop chat
+                int collectedItems = 0;
+                foreach (string item in requiredItemsForUnlock) {
+                    if (playerItems.Contains(item)) 
+                        collectedItems++;
+                }
+                if (collectedItems == requiredItemsForUnlock.Count)
+                    chatStage++;
+                Debug.Log($"Collected {collectedItems}/{requiredItemsForUnlock.Count}");
+            }
+
             chatObject.SetActive(true);
             inChat = true;
             ProgressChat();
@@ -77,28 +98,12 @@ public class NPCManager : MonoBehaviour
     }
 
     void EndChat() {
-        if (chatStage == 1) {
-            // Add new inventory items to tracker
-            foreach (var item in inventory.inventory) {
-                string name = item.name;
-                if (!playerItems.Contains(name))
-                    playerItems.Add(name);
-            }
-            // Check if tracker contains required items, if not loop chat
-            foreach (string item in requiredItemsForUnlock) {
-                if (!playerItems.Contains(item)) {
-                    chatString = 0;
-                    inChat = false;
-                    chatObject.SetActive(false);
-                    return;
-                }
-                    
-            }
-        }
-        chatStage++;
         chatString = 0;
         inChat = false;
         chatObject.SetActive(false);
+
+        if (chatStage == 1) return;
+        chatStage++;
         if (chatStage == 3) {
             beeAnimator.SetTrigger("Create Bee");
             exclMark.SetActive(false);

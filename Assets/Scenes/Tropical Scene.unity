@@ -2220,7 +2220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectInteractable
   destroyOnInteract: 1
   collecableSettings:
-    name: Base Collectable
+    name: Shell
     ground: {fileID: 21300000, guid: df644a9af67cd35409f54ecfbe73ced8, type: 3}
     small: {fileID: 21300000, guid: df644a9af67cd35409f54ecfbe73ced8, type: 3}
     big: {fileID: 21300000, guid: c71a048123922ec41966d69c0b7597ec, type: 3}
@@ -3208,10 +3208,10 @@ SceneRoots:
   - {fileID: 1599136880854884888}
   - {fileID: 7435876334585563278}
   - {fileID: 1048490976}
-  - {fileID: 1314210963031281695}
   - {fileID: 4521963121972623294}
   - {fileID: 522439156}
   - {fileID: 794342791}
+  - {fileID: 1314210963031281695}
   - {fileID: 1314210961317099122}
   - {fileID: 1314210961619564691}
   - {fileID: 1443477402}

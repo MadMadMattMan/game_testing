@@ -166,7 +166,7 @@ SpringJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.005
   m_DampingRatio: 0.25
-  m_Frequency: 0
+  m_Frequency: 1000000
 --- !u!114 &9186234139890189490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892fed0bbb0e2e6458eaeeefb5abd7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeeInteractable
+  spr: {fileID: 0}
 --- !u!61 &4865587452487509845
 BoxCollider2D:
   m_ObjectHideFlags: 0

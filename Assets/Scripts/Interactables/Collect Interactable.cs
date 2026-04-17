@@ -38,13 +38,12 @@ public class CollectInteractable : MonoBehaviour, Interactable
         amr.SetTrigger("Interacted");
         inventoryManager = player.GetComponent<CharacterController>().inventoryManager;
         smallItem.sprite = null;
+        StartCoroutine(CollectDelayed());
     }
-    public void Confirm() {
-        StartCoroutine(ConfirmDelayed());
-    }
-    public IEnumerator ConfirmDelayed() {
+
+    public IEnumerator CollectDelayed() {
         amr.SetTrigger("Collected");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(6.0f);
         inventoryManager.AddItem(collecableSettings);
         makedForDestruction = destroyOnInteract;
     }
