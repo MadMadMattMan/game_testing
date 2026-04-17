@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class CharacterController : MonoBehaviour {
     // The actions defined in the InputSystemAsset relevent to this controller
-    InputAction moveAction, sprintAction, jumpAction, interactAction;
+    InputAction moveAction, sprintAction, jumpAction, interactAction, mouseClickAction;
 
     [Header("Movement Settings")]
     float xVelocity;
@@ -36,13 +37,15 @@ public class CharacterController : MonoBehaviour {
     float mapSize; // calculated at runtime
     public bool loadingMode = false;
     bool firstStart = true;
+    [SerializeField] bool clicking = false;
 
     // private references
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] BoxCollider2D col;
-    [SerializeField] Animator amr;
-    [SerializeField] Transform tf;
-    [SerializeField] CinemachineCamera cine;
+    Rigidbody2D rb;
+    BoxCollider2D col;
+    Animator amr;
+    Transform tf;
+    CinemachineCamera cine;
+    AudioSource clickEffect;
     [SerializeField] List<GameObject> triggerOverlaps = new List<GameObject>();
 
     // Awake is called when script is initialized
@@ -51,6 +54,7 @@ public class CharacterController : MonoBehaviour {
         amr = GetComponent<Animator>();
         tf = GetComponent<Transform>();
         col = GetComponent<BoxCollider2D>();
+        clickEffect = GetComponent<AudioSource>();
 
         // Check for missing - if so force error
         if (rb == null || amr == null || tf == null || col == null)
@@ -64,6 +68,7 @@ public class CharacterController : MonoBehaviour {
             scale = tf.localScale.x;
 
             // Get inputs
+            mouseClickAction = InputSystem.actions.FindAction("Click");
             moveAction = InputSystem.actions.FindAction("Move");
             sprintAction = InputSystem.actions.FindAction("Sprint");
             jumpAction = InputSystem.actions.FindAction("Jump");
@@ -101,12 +106,14 @@ public class CharacterController : MonoBehaviour {
         if (loadingMode) return;
 
         // Collect inputs
+        bool clickinginput = mouseClickAction.IsPressed();
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
         bool jumpInput = jumpAction.IsPressed();
         bool sprintInput = sprintAction.IsPressed();
         bool interactInput = interactAction.IsPressed();
 
         // Execute inputs
+        ClickSfx(clickinginput);
         SprintCharacter(sprintInput);
         MoveCharacter(moveVector);
         JumpCharacter(jumpInput);
@@ -121,11 +128,23 @@ public class CharacterController : MonoBehaviour {
         Teleport();
     }
 
+    void ClickSfx(bool click) {
+        if (click && !clicking) {
+            clicking = true;
+            clickEffect.Play();
+            Debug.Log("Clicked");
+        }
+        else if (!click && clicking)
+            clicking = false;
+    }
+
     void SprintCharacter(bool input) {
         if (input)
             maxSpeed = runSpeed;
-        else
-            maxSpeed = walkSpeed;
+        
+            
+        
+        maxSpeed = walkSpeed;
     }
     void MoveCharacter(Vector2 input) {
         Vector2 delta = input.normalized * acceleration;
@@ -140,7 +159,7 @@ public class CharacterController : MonoBehaviour {
     void JumpCharacter(bool input) {
         // async event handler for coyote time
         Vector3 startpos = new Vector2(tf.position.x, tf.position.y - (col.size.y * tf.localScale.y / 2) -0.01f);
-        RaycastHit2D rch = Physics2D.Raycast(startpos, Vector2.down, groundedDistance, LayerMask.NameToLayer("ground"));
+        RaycastHit2D rch = Physics2D.Raycast(startpos, Vector2.down, groundedDistance);
         Debug.DrawRay(startpos, Vector2.down * groundedDistance, rch ? Color.green : Color.red, 0.05f);
         if (rch && rch.collider.tag.Equals("ground") && rch.collider != col)
             isGrounded = true;

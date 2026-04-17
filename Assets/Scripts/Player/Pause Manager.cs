@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System;
 
 public class PauseManager : MonoBehaviour {
     public GameObject PauseMenu, CreditsPanel; // The pause Menu Canvas
@@ -9,6 +11,9 @@ public class PauseManager : MonoBehaviour {
     bool credits = false;
 
     InputAction pauseAction;
+
+    [SerializeField] List<AudioSource> audioInScene = new List<AudioSource>();
+    public float volume = 1.0f;
 
     void Awake() {
         if (GameObject.FindGameObjectsWithTag("Manager").Length > 1) {
@@ -23,6 +28,13 @@ public class PauseManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(PauseMenu);
             pauseAction = InputSystem.actions.FindAction("Pause");
+        }
+        audioInScene.Clear();
+        audioInScene.Add(GameObject.FindWithTag("Player").GetComponent<AudioSource>());
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Audio")) {
+            AudioSource a = go.GetComponent<AudioSource>();
+            audioInScene.Add(a);
+            a.volume = volume;
         }
     }
 
@@ -64,5 +76,11 @@ public class PauseManager : MonoBehaviour {
 
     public void StartGame() {
         SceneManager.LoadScene("Main Scene");
+    }
+
+    public void UpdateVolume(Single s) {
+        volume = s;
+        foreach (AudioSource a in audioInScene)
+            a.volume = volume;
     }
 }

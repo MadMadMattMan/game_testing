@@ -13,6 +13,7 @@ TagManager:
   - Collection
   - Bee
   - Credits
+  - Audio
   layers:
   - Default
   - TransparentFX
