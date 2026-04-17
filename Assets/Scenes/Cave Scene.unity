@@ -835,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186, y: -99.13183}
-  m_SizeDelta: {x: 400, y: 178.2637}
+  m_AnchoredPosition: {x: 186, y: -94.96202}
+  m_SizeDelta: {x: 400, y: 169.9241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1537283738392987577
 Transform:
@@ -2032,9 +2032,9 @@ MonoBehaviour:
   - There must be.... a bookshelf, a table and a mushroom lamp... somewhere...
   closingDialougeLines:
   - Woaw......... I think......... Lilith would like those.........
-  - now the bee can take you back.........
+  - now the bee can take you .........
   goAwayDialouge:
-  - the bee can take you back.........
+  - the bee can take you .........
   requiredItemsForUnlock:
   - Bookshelf
   - Table
