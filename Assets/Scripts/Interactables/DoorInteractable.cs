@@ -24,6 +24,7 @@ public class DoorInteractable : MonoBehaviour, Interactable
 
     public void WakeUp() {
         player.GetComponent<CharacterController>().loadingMode = true;
+        player.SetActive(false);
         Destroy(player);
         Destroy(managers.GetComponent<PauseManager>().PauseMenu);
         Destroy(managers);
