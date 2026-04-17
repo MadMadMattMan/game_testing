@@ -1419,14 +1419,6 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!81 &2140408621466205440
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2385179795428605496}
-  m_Enabled: 1
 --- !u!1 &2385179795428605496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1599136880854884888}
   - component: {fileID: 8468540946360480616}
-  - component: {fileID: 2140408621466205440}
   - component: {fileID: 1946671889087130878}
   - component: {fileID: 925749251613941613}
   m_Layer: 0

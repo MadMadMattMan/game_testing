@@ -1366,14 +1366,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!81 &2587857630989468985
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8572480385174287562}
-  m_Enabled: 1
 --- !u!1 &2593858590467768405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,7 +3327,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5515013859577751146}
   - component: {fileID: 813610104417506950}
-  - component: {fileID: 2587857630989468985}
   - component: {fileID: 6470674940860794399}
   - component: {fileID: 6473010381365269630}
   m_Layer: 0

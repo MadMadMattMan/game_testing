@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class DoorInteractable : MonoBehaviour, Interactable
 {
 
-    [SerializeField] GameObject fadeAnimation;
+    [SerializeField] GameObject fadeAnimation, wakeUpButton;
     GameObject managers, player;
     bool interacting = false;
 
@@ -22,14 +22,18 @@ public class DoorInteractable : MonoBehaviour, Interactable
         }
     }
 
-    IEnumerator EndAnimationPause() {
-        fadeAnimation.gameObject.SetActive(true);
-        yield return new WaitForSeconds(10.0f);
-
+    public void WakeUp() {
         player.GetComponent<CharacterController>().loadingMode = true;
         Destroy(player);
         Destroy(managers.GetComponent<PauseManager>().PauseMenu);
         Destroy(managers);
         SceneManager.LoadScene("Main Scene"); // reset game
+    }
+
+    IEnumerator EndAnimationPause() {
+        player.GetComponent<CharacterController>().loadingMode = true;
+        fadeAnimation.SetActive(true);
+        yield return new WaitForSeconds(6.0f);
+        wakeUpButton.SetActive(true);
     }
 }

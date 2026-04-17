@@ -619,14 +619,6 @@ Transform:
   - {fileID: 1852212603597751846}
   m_Father: {fileID: 8634346063571995732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &135643113297587347
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4417037957145063339}
-  m_Enabled: 1
 --- !u!1 &211994527474395850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,7 +2254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 748972448013972363}
   - component: {fileID: 7625695756264088315}
-  - component: {fileID: 135643113297587347}
   - component: {fileID: 528701508657577325}
   - component: {fileID: 1192689699759705854}
   m_Layer: 0
