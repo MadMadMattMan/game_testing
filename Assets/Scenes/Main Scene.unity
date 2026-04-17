@@ -4399,21 +4399,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bee Main
       objectReference: {fileID: 0}
-    - target: {fileID: 350084531928450358, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 395380773615152195, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 237113997}
-    - target: {fileID: 1669541591462705705, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879362635496373164, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 3192682374565094994, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7199626766328327928, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4454,10 +4446,6 @@ PrefabInstance:
     - target: {fileID: 7199626766328327928, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8434014667300285351, guid: 8a8ff6739f1a06b449e646e138edfc0b, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
