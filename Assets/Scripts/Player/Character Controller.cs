@@ -103,7 +103,10 @@ public class CharacterController : MonoBehaviour {
 
     // FixedUpdate called at a fixed framerate (typically 60fps) for smoothed physics
     void FixedUpdate() {
-        if (loadingMode) return;
+        if (loadingMode) {
+            Animations(true);
+            return;
+        }
 
         // Collect inputs
         bool clickinginput = mouseClickAction.IsPressed();
@@ -124,7 +127,7 @@ public class CharacterController : MonoBehaviour {
         transform.localScale = new Vector3(xFlip*scale, scale); // flip the char to move dir
 
         // Run final checks
-        Animations();
+        Animations(false);
         Teleport();
     }
 
@@ -141,10 +144,8 @@ public class CharacterController : MonoBehaviour {
     void SprintCharacter(bool input) {
         if (input)
             maxSpeed = runSpeed;
-        
-            
-        
-        maxSpeed = walkSpeed;
+        else
+            maxSpeed = walkSpeed;
     }
     void MoveCharacter(Vector2 input) {
         Vector2 delta = input.normalized * acceleration;
@@ -192,12 +193,17 @@ public class CharacterController : MonoBehaviour {
             }
         }
     }
-    void Animations() {
-        amr.SetFloat("MoveSpeed", Mathf.Abs(xVelocity));
-        if (isGrounded && !pastGrounded)
-            amr.SetTrigger("Landing");
-        
-        pastGrounded = isGrounded; // Set up for next update
+    void Animations(bool reset) {
+        if (reset) {
+            amr.SetFloat("MoveSpeed", 0);
+        }
+        else {
+            amr.SetFloat("MoveSpeed", Mathf.Abs(xVelocity));
+            if (isGrounded && !pastGrounded)
+                amr.SetTrigger("Landing");
+
+            pastGrounded = isGrounded; // Set up for next update
+        }
     }
     void Teleport() {
         if (leftSide == null || rightSide == null || loadingMode) return;

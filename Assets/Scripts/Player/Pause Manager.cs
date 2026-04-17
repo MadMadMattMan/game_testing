@@ -28,15 +28,20 @@ public class PauseManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(PauseMenu);
             pauseAction = InputSystem.actions.FindAction("Pause");
+            UpdateSound();
         }
+    }
+    public void UpdateSound() {
         audioInScene.Clear();
         audioInScene.Add(GameObject.FindWithTag("Player").GetComponent<AudioSource>());
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Audio")) {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Audio"))
+        {
             AudioSource a = go.GetComponent<AudioSource>();
             audioInScene.Add(a);
             a.volume = volume;
         }
     }
+
 
     void Update() {
         if (PauseMenu != null) {

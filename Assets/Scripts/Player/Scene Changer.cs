@@ -56,5 +56,6 @@ public class SceneChanger : MonoBehaviour {
 
         charControl.SetupPlayer();
         charControl.loadingMode = false;
+        GetComponent<PauseManager>().UpdateSound();
     }
 }

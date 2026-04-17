@@ -338,7 +338,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   CreditsPanel: {fileID: 1691443126}
   paused: 0
   audioInScene: []
-  volume: 1
+  volume: 0.5
 --- !u!4 &1704203688
 Transform:
   m_ObjectHideFlags: 0
