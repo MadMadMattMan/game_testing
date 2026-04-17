@@ -183,7 +183,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 6b0127c0b20496a4c969f9d715a09ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1437,15 +1437,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ohohoh, hello traveller! I'm glad you've arrived~
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4009f6df42c5f1439116d645b3d06f3, type: 2}
+  m_sharedMaterial: {fileID: -6664190722950599341, guid: c4009f6df42c5f1439116d645b3d06f3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4288422077
+  m_fontColor: {r: 0.7411765, g: 0.1254902, b: 0.6117647, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1462,14 +1462,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.5
+  m_fontSize: 80
   m_fontSizeBase: 24.6
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 25
-  m_fontSizeMax: 45
+  m_fontSizeMax: 80
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 2.1102066, y: 5.4524536, z: 4.923729, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1951,9 +1951,9 @@ MonoBehaviour:
   - Welcome to my garden, full of beauty and whimsy!
   - Ohohoh, you're decorating a friend's house? I don't know them...
   - ... but I do have some things lying around that you could take!
-  - How's about [items]?
+  - How's about this plant here next to me?
   reminderDialougeLines:
-  - I have [items] lying around somewhere you can take!
+  - I have decorations lying around somewhere you can take!
   closingDialougeLines:
   - Splendid, splendid! Excellent picks! The bee taxi has opened now, toodaloo~
   goAwayDialouge:
@@ -1971,7 +1971,7 @@ Transform:
   m_GameObject: {fileID: 472852333759702095}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.255, y: -0.338, z: 0}
+  m_LocalPosition: {x: -8.254, y: -0.355, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
