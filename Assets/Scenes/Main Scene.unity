@@ -2299,9 +2299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
   sceneOrder:
   - Main Scene
-  - Tropical Scene
   - Garden Scene
   - Cave Scene
+  - Tropical Scene
   stage: 0
   player: {fileID: 0}
   bee: {fileID: 0}
