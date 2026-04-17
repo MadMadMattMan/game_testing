@@ -161,8 +161,15 @@ public class CharacterController : MonoBehaviour {
             for (int i = 0; i < triggerOverlaps.Count; i++) {
                 GameObject t = triggerOverlaps[i];
                 Interactable interactable;
-                if (t.TryGetComponent<Interactable>(out interactable))
+                if (t.TryGetComponent<Interactable>(out interactable)) {
                     interactable.Interact(gameObject);
+                    return;
+                }
+                else {
+                    interactable = t.GetComponentInParent<Interactable>();
+                    if (interactable != null)
+                        interactable.Interact(gameObject);
+                }
             }
         }
     }
