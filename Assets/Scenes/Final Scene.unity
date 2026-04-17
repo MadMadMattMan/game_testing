@@ -1188,11 +1188,11 @@ MonoBehaviour:
   introDialougeLines: []
   reminderDialougeLines: []
   closingDialougeLines:
-  - Ohohoh, hello traveller! I'm glad you've back~
-  - I trust you found the most WACKY decor for my new hourse!
-  - Why don't you go inside and rest for the night~
+  - Ohohoh, hello traveller! I'm glad you're back~
+  - I trust you found the most WACKY decor for my new house!
+  - Why don't you go on inside and rest for the night~
   goAwayDialouge:
-  - It's getting late, why don't you go inside and rest for the night?
+  - It's getting late, why don't you go on inside and rest for the night?
   requiredItemsForUnlock: []
   chatObject: {fileID: 5844540888499670530}
   exclMark: {fileID: 7423386124820152651}
@@ -1977,7 +1977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteractable
   fadeAnimation: {fileID: 1788364391}
-  interacting: 0
 --- !u!114 &4628645450258721301
 MonoBehaviour:
   m_ObjectHideFlags: 0
