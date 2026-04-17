@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 1a9f735b8a683004086cfeed9068a481
+guid: 30d58021c96054e4085f28bb0bd524b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4261011524491365225
-    second: small_flower_card 1_0
+      213: -6206801448153662324
+    second: small_mushroom_0
+  - first:
+      213: -714654300804056869
+    second: small_mushroom_1
+  - first:
+      213: -1799301708469195373
+    second: small_mushroom_2
+  - first:
+      213: 2380395430543760268
+    second: small_mushroom_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,9 +55,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -72,7 +81,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: small_flower_card 1_0
+      name: small_mushroom_0
       rect:
         serializedVersion: 2
-        x: 59
+        x: 0
         y: 19
-        width: 212
-        height: 272
+        width: 160
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 794b8d22898ddd4c0800000000000000
-      internalID: -4261011524491365225
+      spriteID: c8cbb6bc7f20dd9a0800000000000000
+      internalID: -6206801448153662324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_mushroom_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 129
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd87e5723b90516f0800000000000000
+      internalID: -714654300804056869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_mushroom_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39da0f611a89707e0800000000000000
+      internalID: -1799301708469195373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_mushroom_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8b168e380dd80120800000000000000
+      internalID: 2380395430543760268
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      small_flower_card 1_0: -4261011524491365225
+      small_mushroom_0: -6206801448153662324
+      small_mushroom_1: -714654300804056869
+      small_mushroom_2: -1799301708469195373
+      small_mushroom_3: 2380395430543760268
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
