@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tropical Scene.unity
     guid: 44ccbcc38e9a1f94c994a90ce912ea20
+  - enabled: 1
+    path: Assets/Scenes/Final Scene.unity
+    guid: 56495ae8efb2f8745ba43f7e11a2ea64
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -135,7 +135,6 @@ public class CharacterController : MonoBehaviour {
         if (click && !clicking) {
             clicking = true;
             clickEffect.Play();
-            Debug.Log("Clicked");
         }
         else if (!click && clicking)
             clicking = false;
