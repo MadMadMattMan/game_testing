@@ -2347,6 +2347,8 @@ MonoBehaviour:
   - and then go find a couch and a flower for me.
   reminderDialougeLines:
   - I have decorations lying around somewhere you can take!
+  - You should have a plant, couch and flower first. I don't know Lilith but she
+    might like that...
   closingDialougeLines:
   - Splendid, splendid! Excellent picks! The bee taxi has opened now, toodaloo~
   goAwayDialouge:

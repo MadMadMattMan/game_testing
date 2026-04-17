@@ -2276,14 +2276,14 @@ MonoBehaviour:
   - and I saw some free stuff washed up along the shoreline
   - Go find a coconut, a sea shell and a starfish and come back to me.
   reminderDialougeLines:
-  - Yo dude, you still don't have all the suff
-  - Go find a coconut, a sea shell and a starfish and come back to me.
+  - Yo dude, you still don't have all the stuff bro
+  - Go find a coconut, a sea shell and a starfish and come back to me 'kay dude.
   closingDialougeLines:
   - Yo those are some radical finds my dude!
-  - Best of luck out there bro, the bee taxi is to your left, or right...I dont know
-    man I feel like I am walking in circles some days
+  - Best of luck out there bro, the bee taxi is to your left, or right..?
+  - 'Hey, I dont know man I feel like I am walking in circles some days. '
   goAwayDialouge:
-  - The bee taxi is waiting to you left!
+  - The bee taxi is waiting bruh. Go left or right you'll see it eventually.
   requiredItemsForUnlock:
   - Coconut
   - Shell
