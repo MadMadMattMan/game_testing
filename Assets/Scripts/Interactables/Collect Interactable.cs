@@ -14,9 +14,10 @@ public class CollectInteractable : MonoBehaviour, Interactable
 
     // check and force add a trigger to this object on awake
     void Awake() {
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
         Collider2D col;
-        if (!TryGetComponent<Collider2D>(out col)) // if failed to get existing collider, add one
-            col = gameObject.AddComponent<BoxCollider2D>();
+        if (!renderer.gameObject.TryGetComponent<Collider2D>(out col))
+            col = renderer.gameObject.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
 
         amr = GetComponent<Animator>();
